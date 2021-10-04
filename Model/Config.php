@@ -33,7 +33,7 @@ class Config extends \Inchoo\ProductFaq\Model\Config
     {
         return $this->getProductFaqActive() && $this->config->isSetFlag(
             self::PRODUCT_FAQ_NOTIFICATIONS_ACTIVE,
-            ScopeInterface::SCOPE_STORE
+            ScopeInterface::SCOPE_STORES
         );
     }
 
