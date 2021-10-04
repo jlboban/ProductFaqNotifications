@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Inchoo\ProductFaqNotifications\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Store\Model\ScopeInterface;
 
 class Config extends \Inchoo\ProductFaq\Model\Config
 {
@@ -26,26 +27,29 @@ class Config extends \Inchoo\ProductFaq\Model\Config
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
-    public function getProductFaqNotificationsActive()
+    public function getProductFaqNotificationsActive(): bool
     {
-        return $this->config->getValue(self::PRODUCT_FAQ_NOTIFICATIONS_ACTIVE);
+        return $this->getProductFaqActive() && $this->config->isSetFlag(
+            self::PRODUCT_FAQ_NOTIFICATIONS_ACTIVE,
+            ScopeInterface::SCOPE_STORE
+        );
     }
 
     /**
-     * @return mixed
+     * @return string|null
      */
-    public function getReceiverEmail()
+    public function getReceiverEmail(): ?string
     {
-        return $this->config->getValue(self::RECEIVER_EMAIL);
+        return $this->config->getValue(self::RECEIVER_EMAIL, ScopeInterface::SCOPE_STORES);
     }
 
     /**
-     * @return mixed
+     * @return string|null
      */
-    public function getReceiverName()
+    public function getReceiverName(): ?string
     {
-        return $this->config->getValue(self::RECEIVER_NAME);
+        return $this->config->getValue(self::RECEIVER_NAME, ScopeInterface::SCOPE_STORES);
     }
 }
