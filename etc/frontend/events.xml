@@ -1,5 +1,5 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
-    <event name="create_productFaq">
-        <observer name="createProductFaqObserver" instance="Inchoo\ProductFaqNotifications\Observer\CreateProductFaqObserver"/>
+    <event name="create_product_faq">
+        <observer name="productFaqNotificationObserver" instance="Inchoo\ProductFaqNotifications\Observer\ProductFaqNotificationObserver"/>
     </event>
 </config>
